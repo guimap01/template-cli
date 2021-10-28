@@ -3,9 +3,9 @@ import fs from 'fs';
 import ncp from 'ncp';
 import path from 'path';
 import { promisify } from 'util';
-import execa from 'execa';
 import Listr from 'listr';
 import { projectInstall } from 'pkg-install';
+import { replaceVariables } from './replaceVariabless';
 
 const access = promisify(fs.access);
 const copy = promisify(ncp);
@@ -42,6 +42,10 @@ export async function createProject(options) {
     {
       title: 'Copiando arquivos do projeto',
       task: () => copyTemplateFiles(options),
+    },
+    {
+      title: 'Aplicando as variaveis',
+      task: () => replaceVariables(options),
     },
     {
       title: 'Instalando as dependencias',

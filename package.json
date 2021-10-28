@@ -3,15 +3,15 @@
   "version": "1.0.0",
   "description": "A CLI to bootstrap new Micro-Frontend projects",
   "bin": {
-    "@guimap01/create-project": "bin/create-project",
-    "create-project": "bin/create-project"
+    "@guimap01/template-cli": "bin/template-cli",
+    "template-cli": "bin/template-cli"
   },
   "publishConfig": {
     "access": "public"
   },
   "keywords": [
     "cli",
-    "create-project"
+    "template-cli"
   ],
   "author": "Pedro Monteiro Guimaraes",
   "main": "src/index.js",
