@@ -51,7 +51,7 @@ module.exports = (_, args) => {
     },
     plugins: [
       new ModuleFederationPlugin({
-        name: 'app2',
+        name: 'simple_remote',
         filename: 'remoteEntry.js',
         exposes: {
           './DummyPage': './src/pages/Page',
