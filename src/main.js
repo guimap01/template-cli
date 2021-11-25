@@ -38,7 +38,7 @@ export async function createProject(options) {
     process.exit(1);
   }
 
-  const tasks = new Listr([
+  const taksList = [
     {
       title: 'Copiando arquivos do projeto',
       task: () => copyTemplateFiles(options),
@@ -55,7 +55,9 @@ export async function createProject(options) {
           prefer: options.packageManager || 'yarn',
         }),
     },
-  ]);
+  ];
+
+  const tasks = new Listr(taksList);
 
   await tasks.run();
 

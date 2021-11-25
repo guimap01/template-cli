@@ -1,6 +1,6 @@
-import React from "react";
-import { Switch, Route, BrowserRouter } from "react-router-dom";
-import { DummyPage } from "../pages/DummyPage";
+import React from 'react';
+import { Switch, Route, BrowserRouter } from 'react-router-dom';
+import { DummyPage } from '../pages/DummyPage';
 
 export const Routes = () => {
   return (

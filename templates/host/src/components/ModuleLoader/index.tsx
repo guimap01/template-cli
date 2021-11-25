@@ -1,4 +1,4 @@
-import React, { ReactNode, Suspense, SuspenseProps } from "react";
+import React, { ReactNode, Suspense, SuspenseProps } from 'react';
 
 export interface ModuleLoaderProps extends SuspenseProps {
   errorFallback?: ReactNode;
@@ -23,7 +23,7 @@ class ModuleLoader extends React.Component<
     const { hasError } = this.state;
 
     if (hasError) {
-      return <>{errorFallback || "Erro ao carregar módulo federado"}</>;
+      return <>{errorFallback || 'Erro ao carregar módulo federado'}</>;
     }
 
     return <Suspense fallback={fallback}>{children}</Suspense>;

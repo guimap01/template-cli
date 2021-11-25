@@ -6,6 +6,8 @@ export default {
     '!src/App.tsx',
     '!src/bootstrap.tsx',
     '!src/routes/index.tsx',
+    '!src/index.tsx',
+    '!src/types/*.ts(x)?'
   ],
   testPathIgnorePatterns: ['<rootDir>[/\\\\](node_modules|.next)[/\\\\]'],
   transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.(ts|tsx)$'],
@@ -18,6 +20,7 @@ export default {
     '^.+\\.(ts|tsx)?$': 'ts-jest',
     '^.+\\.(ts|tsx)$': 'babel-jest',
     '^.+\\.svg$': '<rootDir>/svgTransform.js',
+    '^.+\\.png$': '<rootDir>/svgTransform.js',
   },
   moduleFileExtensions: ['js', 'ts', 'tsx', 'json'],
   watchPlugins: [

@@ -11,13 +11,14 @@ export default {
   transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.(ts|tsx)$'],
   clearMocks: true,
   collectCoverage: true,
-  coverageDirectory: "coverage",
-  coverageProvider: "v8",
-  testEnvironment: "jsdom",
+  coverageDirectory: 'coverage',
+  coverageProvider: 'v8',
+  testEnvironment: 'jsdom',
   transform: {
     '^.+\\.(ts|tsx)?$': 'ts-jest',
     '^.+\\.(ts|tsx)$': 'babel-jest',
     '^.+\\.svg$': '<rootDir>/svgTransform.js',
+    '^.+\\.png$': '<rootDir>/svgTransform.js',
   },
   moduleFileExtensions: ['js', 'ts', 'tsx', 'json'],
   watchPlugins: [

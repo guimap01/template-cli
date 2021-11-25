@@ -1,17 +1,11 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ModuleFederationPlugin =
   require('webpack').container.ModuleFederationPlugin;
 const Dotenv = require('dotenv-webpack');
 const webpack = require('webpack');
 const path = require('path');
-const env = require('dotenv').config().parsed;
-
-const envKeys = Object.keys(env).reduce((prev, next) => {
-  if (next.startsWith('PUBLIC_')) {
-    prev[next] = JSON.stringify(env[next]);
-  }
-  return prev;
-}, {});
+const dependencies = require('./package.json').dependencies;
 
 module.exports = (_, args) => {
   return {
@@ -50,13 +44,22 @@ module.exports = (_, args) => {
       ],
     },
     plugins: [
+      new webpack.ProgressPlugin(),
+      new CleanWebpackPlugin(),
       new ModuleFederationPlugin({
-        name: 'simple_remote',
+        name: 'app2',
         filename: 'remoteEntry.js',
         exposes: {
-          './DummyPage': './src/pages/Page',
+          './DummyPage': './src/pages/DummyPage',
         },
-        shared: ['react', 'react-dom'],
+        shared: {
+          ...dependencies,
+          react: { singleton: true, requiredVersion: dependencies.react },
+          'react-dom': {
+            singleton: true,
+            requiredVersion: dependencies['react-dom'],
+          },
+        },
       }),
       new HtmlWebpackPlugin({
         template: './public/index.html',
@@ -64,9 +67,6 @@ module.exports = (_, args) => {
       new Dotenv({
         safe: true,
         path: './.env',
-      }),
-      new webpack.DefinePlugin({
-        Environments: envKeys,
       }),
     ],
   };
